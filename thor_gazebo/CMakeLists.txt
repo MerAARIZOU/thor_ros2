@@ -33,7 +33,7 @@ set(dependencies
 )
 
 install (
-  DIRECTORY config launch models src urdf worlds
+  DIRECTORY config launch src urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
