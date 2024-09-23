@@ -1,0 +1,62 @@
+# gz topic published by the JointState plugin
+- ros_topic_name: "joint_states"
+  gz_topic_name: "joint_states"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "ignition.msgs.Model" # In future, this will be gz.msgs.Model
+  direction: GZ_TO_ROS
+
+# gz topic subscribed by the JointPositionController plugin
+- ros_topic_name: "model/thor/joint/joint_base_art1_yaw/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_base_art1_yaw/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_art1_art2_pitch/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_art1_art2_pitch/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_art2_art3_pitch/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_art2_art3_pitch/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_art3_art4_roll/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_art3_art4_roll/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_art4_art5_pitch/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_art4_art5_pitch/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_art5_art6_roll/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_art5_art6_roll/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_arm_hand/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_arm_hand/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_hand_finger_left/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_hand_finger_left/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "model/thor/joint/joint_hand_finger_right/cmd_pos"
+  gz_topic_name: "model/thor/joint/joint_hand_finger_right/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double" # In future, this will be gz.msgs.Double
+  direction: ROS_TO_GZ
+
