@@ -1,0 +1,568 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+<world name="default">
+    
+<!-- light -->
+       
+    <model name="thor">
+            <static>true</static>
+            <light type="directional" name="sun">
+                <cast_shadows>true</cast_shadows>
+                <pose>0 0 10 0 0 0</pose>
+                <diffuse>0.8 0.8 0.8 1</diffuse>
+                <specular>0.2 0.2 0.2 1</specular>
+                <attenuation>
+                <range>1000</range>
+                <constant>0.9</constant>
+                <linear>0.01</linear>
+                <quadratic>0.001</quadratic>
+                </attenuation>
+                <direction>-0.5 0.1 -0.9</direction>
+            </light>
+            <link name="link">
+            <collision name="collision">
+                <geometry>
+                    <plane>
+                        <normal>0 0 1</normal>
+                        <size>100 100</size>
+                    </plane>
+                </geometry>
+                <surface>
+                    <friction>
+                        <ode>
+                            <mu>100</mu>
+                            <mu2>50</mu2>
+                        </ode>
+                    </friction>
+                </surface>
+            </collision>
+            <visual name="visual">
+                <cast_shadows>false</cast_shadows>
+                <geometry>
+                    <plane>
+                        <normal>0 0 1</normal>
+                        <size>100 100</size>
+                    </plane>
+                </geometry>
+                <material>
+                    <ambient>0.3 0.3 0.3 1</ambient>
+                    <diffuse>0.7 0.7 0.7 1</diffuse>
+                    <specular>0.01 0.01 0.01 1</specular>
+                </material>
+            </visual>
+        </link>
+            <link name='dummy_link'>
+                <inertial>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <mass>20</mass>
+                    <inertia>
+                    <ixx>4.77834e+09</ixx>
+                    <ixy>6.16761e+07</ixy>
+                    <ixz>-3.46234e+08</ixz>
+                    <iyy>9.9566e+09</iyy>
+                    <iyz>-3.67351e+06</iyz>
+                    <izz>1.23502e+10</izz>
+                    </inertia>
+                </inertial>
+                <collision name='dummy_link_fixed_joint_lump__link_base_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/base.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='dummy_link_fixed_joint_lump__link_base_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/base.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 1 1 1 1</diffuse>
+                        <ambient>0 0 0 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <joint name='joint_base_art1_yaw' type='revolute'>
+                <pose relative_to='dummy_link'>0 0 0.104 0 -0 0</pose>
+                <parent>dummy_link</parent>
+                <child>link_art1</child>
+                <axis>
+                    <xyz>0 0 1</xyz>
+                    <limit>
+                    <lower>-3.1415</lower>
+                    <upper>3.1415</upper>
+                    <effort>8</effort>
+                    <velocity>1</velocity>
+                    </limit>
+                    <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_art1'>
+                <pose relative_to='joint_base_art1_yaw'>0 0 0 0 -0 0</pose>
+                <inertial>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <mass>1.6</mass>
+                    <inertia>
+                    <ixx>2.092e+09</ixx>
+                    <ixy>-6433.2</ixy>
+                    <ixz>-9487.12</ixz>
+                    <iyy>2.1788e+09</iyy>
+                    <iyz>9.6797e+07</iyz>
+                    <izz>1.44916e+09</izz>
+                    </inertia>
+                </inertial>
+                <collision name='link_art1_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art1.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='link_art1_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art1.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 0.1 0.1 0.2 1</diffuse>
+                        <ambient>0.1 0.1 0.1 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <joint name='joint_art1_art2_pitch' type='revolute'>
+                <pose relative_to='link_art1'>0 -0.031875 0.09743 1.5708 -1.5708 0</pose>
+                <parent>link_art1</parent>
+                <child>link_art2</child>
+                <axis>
+                    <xyz>0 0 1</xyz>
+                    <limit>
+                    <lower>-1.5708</lower>
+                    <upper>1.5708</upper>
+                    <effort>20</effort>
+                    <velocity>1</velocity>
+                    </limit>
+                    <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_art2'>
+                <pose relative_to='joint_art1_art2_pitch'>0 0 0 0 -0 0</pose>
+                <inertial>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <mass>0.8</mass>
+                    <inertia>
+                    <ixx>2.49476e+09</ixx>
+                    <ixy>169831</ixy>
+                    <ixz>-1.92685e+08</ixz>
+                    <iyy>5.29653e+09</iyy>
+                    <iyz>-4.34737e+06</iyz>
+                    <izz>4.27722e+09</izz>
+                    </inertia>
+                </inertial>
+                <collision name='link_art2_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art2.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='link_art2_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art2.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 1 1 1 1</diffuse>
+                        <ambient>0 0 0 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <joint name='joint_art2_art3_pitch' type='revolute'>
+                <pose relative_to='link_art2'>0.16 0 0 0 -0 0</pose>
+                <parent>link_art2</parent>
+                <child>link_art3</child>
+                <axis>
+                    <xyz>0 0 1</xyz>
+                    <limit>
+                    <lower>-1.5708</lower>
+                    <upper>1.5708</upper>
+                    <effort>8</effort>
+                    <velocity>1</velocity>
+                    </limit>
+                    <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_art3'>
+                <pose relative_to='joint_art2_art3_pitch'>0 0 0 0 -0 0</pose>
+                <inertial>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <mass>1.1</mass>
+                    <inertia>
+                    <ixx>5.09821e+08</ixx>
+                    <ixy>-4.42348e+06</ixy>
+                    <ixz>1.1081e+06</ixz>
+                    <iyy>8.61985e+08</iyy>
+                    <iyz>-62569.3</iyz>
+                    <izz>9.46195e+08</izz>
+                    </inertia>
+                </inertial>
+                <collision name='link_art3_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art3.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='link_art3_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art3.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 0.1 0.1 0.2 1</diffuse>
+                        <ambient>0.1 0.1 0.1 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <joint name='joint_art3_art4_roll' type='revolute'>
+                <pose relative_to='link_art3'>0.0885 0 -0.035 0 1.5708 0</pose>
+                <parent>link_art3</parent>
+                <child>link_art4</child>
+                <axis>
+                    <xyz>0 0 1</xyz>
+                    <limit>
+                    <lower>-3.1415</lower>
+                    <upper>3.1415</upper>
+                    <effort>4</effort>
+                    <velocity>1</velocity>
+                    </limit>
+                    <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_art4'>
+                <pose relative_to='joint_art3_art4_roll'>0 0 0 0 -0 0</pose>
+                <inertial>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <mass>0.5</mass>
+                    <inertia>
+                    <ixx>7.66527e+08</ixx>
+                    <ixy>513188</ixy>
+                    <ixz>-15419.9</ixz>
+                    <iyy>8.98525e+08</iyy>
+                    <iyz>546205</iyz>
+                    <izz>7.18228e+08</izz>
+                    </inertia>
+                </inertial>
+                <collision name='link_art4_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art4.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='link_art4_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art4.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 1 1 1 1</diffuse>
+                        <ambient>0 0 0 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <joint name='joint_art4_art5_pitch' type='revolute'>
+                <pose relative_to='link_art4'>0 0 0.1 0 -1.5708 0</pose>
+                <parent>link_art4</parent>
+                <child>link_art5</child>
+                <axis>
+                    <xyz>0 0 1</xyz>
+                    <limit>
+                    <lower>-1.5</lower>
+                    <upper>1.5</upper>
+                    <effort>6</effort>
+                    <velocity>1</velocity>
+                    </limit>
+                    <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_art5'>
+                <pose relative_to='joint_art4_art5_pitch'>0 0 0 0 -0 0</pose>
+                <inertial>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <mass>0.5</mass>
+                    <inertia>
+                    <ixx>2.28537e+07</ixx>
+                    <ixy>-103.737</ixy>
+                    <ixz>-10548.7</ixz>
+                    <iyy>1.66402e+07</iyy>
+                    <iyz>-0.059193</iyz>
+                    <izz>3.67241e+07</izz>
+                    </inertia>
+                </inertial>
+                <collision name='link_art5_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art5.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='link_art5_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art5.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 0.1 0.1 0.2 1</diffuse>
+                        <ambient>0.1 0.1 0.1 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <joint name='joint_art5_art6_roll' type='revolute'>
+                <pose relative_to='link_art5'>0 0 0 0 1.5708 0</pose>
+                <parent>link_art5</parent>
+                <child>link_art6</child>
+                <axis>
+                    <xyz>0 0 1</xyz>
+                    <limit>
+                    <lower>-3.1415</lower>
+                    <upper>3.1415</upper>
+                    <effort>4</effort>
+                    <velocity>1</velocity>
+                    </limit>
+                    <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_art6'>
+                <pose relative_to='joint_art5_art6_roll'>0 0 0 0 -0 0</pose>
+                <inertial>
+                    <pose>0 0.002705 0.012623 0 -0 0</pose>
+                    <mass>0.61</mass>
+                    <inertia>
+                    <ixx>5.15575e+07</ixx>
+                    <ixy>-225474</ixy>
+                    <ixz>-414565</ixz>
+                    <iyy>6.17683e+07</iyy>
+                    <iyz>1.84074e+06</iyz>
+                    <izz>4.67224e+07</izz>
+                    </inertia>
+                </inertial>
+                <collision name='link_art6_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art6.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <collision name='link_art6_fixed_joint_lump__link_hand_collision_1'>
+                    <pose>0 0.015 0.07 1.5708 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/hand.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='link_art6_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/art6.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 0.1 0.1 0.2 1</diffuse>
+                        <ambient>0.1 0.1 0.1 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+                <visual name='link_art6_fixed_joint_lump__link_hand_visual_1'>
+                    <pose>0 0.015 0.07 1.5708 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/hand.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 1 1 1 1</diffuse>
+                        <ambient>0 0 0 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <!--joint name='joint_hand_finger_left' type='prismatic'>
+                <pose relative_to='link_art6'>0.05 0.015 0.09 1.5708 -0 0</pose>
+                <parent>link_art6</parent>
+                <child>link_finger_left</child>
+                <axis>
+                    <xyz>-0.5547 0.8321 0</xyz>
+                    <limit>
+                    <lower>0</lower>
+                    <upper>0.06</upper>
+                    <effort>100</effort>
+                    <velocity>10</velocity>
+                    </limit>
+                    <dynamics>
+                    <damping>0.3</damping>
+                    <friction>0.5</friction>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_finger_left'>
+                <pose relative_to='joint_hand_finger_left'>0 0 0 0 -0 0</pose>
+                <inertial>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <mass>0.01</mass>
+                    <inertia>
+                    <ixx>3.35878e+06</ixx>
+                    <ixy>-145110</ixy>
+                    <ixz>93.5391</ixz>
+                    <iyy>627438</iyy>
+                    <iyz>1280.36</iyz>
+                    <izz>3.41063e+06</izz>
+                    </inertia>
+                </inertial>
+                <collision name='link_finger_left_collision'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>-0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/finger.stl</uri>
+                    </mesh>
+                    </geometry>
+                </collision>
+                <visual name='link_finger_left_visual'>
+                    <pose>0 0 0 0 -0 0</pose>
+                    <geometry>
+                    <mesh>
+                        <scale>-0.001 0.001 0.001</scale>
+                        <uri>package://thor_description/meshes/thor/finger.stl</uri>
+                    </mesh>
+                    </geometry>
+                    <material>
+                        <diffuse> 1 1 1 1</diffuse>
+                        <ambient>0 0 0 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </visual>
+            </link>
+            <joint name='joint_hand_finger_right' type='prismatic'>
+                <pose relative_to='link_art6'>-0.05 0.015 0.09 1.5708 -0 0</pose>
+                <parent>link_art6</parent>
+                <child>link_finger_right</child>
+                <axis>
+                    <xyz>0.5547 0.8321 0</xyz>
+                    <limit>
+                    <lower>0</lower>
+                    <upper>0.06</upper>
+                    <effort>100</effort>
+                    <velocity>10</velocity>
+                    </limit>
+                    <dynamics>
+                    <damping>0.3</damping>
+                    <friction>0.5</friction>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                    </dynamics>
+                </axis>
+            </joint>
+            <link name='link_finger_right'>
+            <pose relative_to='joint_hand_finger_right'>0 0 0 0 -0 0</pose>
+            <inertial>
+                <pose>0 0 0 0 -0 0</pose>
+                <mass>0.01</mass>
+                <inertia>
+                <ixx>3.35878e+06</ixx>
+                <ixy>-145110</ixy>
+                <ixz>93.5391</ixz>
+                <iyy>627438</iyy>
+                <iyz>1280.36</iyz>
+                <izz>3.41063e+06</izz>
+                </inertia>
+            </inertial>
+            <collision name='link_finger_right_collision'>
+                <pose>0 0 0 0 -0 0</pose>
+                <geometry>
+                <mesh>
+                    <scale>0.001 0.001 0.001</scale>
+                    <uri>package://thor_description/meshes/thor/finger.stl</uri>
+                </mesh>
+                </geometry>
+            </collision>
+            <visual name='link_finger_right_visual'>
+                <pose>0 0 0 0 -0 0</pose>
+                <geometry>
+                <mesh>
+                    <scale>0.001 0.001 0.001</scale>
+                    <uri>package://thor_description/meshes/thor/finger.stl</uri>
+                </mesh>
+                <material>
+                        <diffuse> 1 1 1 1</diffuse>
+                        <ambient>0 0 0 1</ambient>
+                        <specular>0 0 0 0</specular>
+                    </material>
+                </geometry>
+            </visual>
+            </link-->
+        </model>
+</world>
+</sdf>

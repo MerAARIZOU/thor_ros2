@@ -8,12 +8,8 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(controller_manager REQUIRED)
-find_package(gazebo_ros REQUIRED)
-find_package(gazebo_ros2_control REQUIRED)
-find_package(gazebo_ros_pkgs REQUIRED)
 find_package(gripper_controllers REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(ros_gz REQUIRED)
 find_package(ros_gz_bridge REQUIRED)
 find_package(ros_gz_sim REQUIRED)
 find_package(ros_gz_image REQUIRED)
@@ -33,7 +29,7 @@ set(dependencies
 )
 
 install (
-  DIRECTORY config launch src urdf worlds
+  DIRECTORY config launch urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
 

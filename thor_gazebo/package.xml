@@ -8,12 +8,8 @@
   <license>BSD-3-Clause</license>
 
   <depend>controller_manager</depend>
-  <depend>gazebo_ros</depend>
-  <depend>gazebo_ros2_control</depend>
-  <depend>gazebo_ros_pkgs</depend>
   <depend>gripper_controllers</depend>
   <depend>rclcpp</depend>
-  <depend>ros_gz</depend>
   <depend>ros_gz_bridge</depend>
   <depend>ros_gz_sim</depend>
   <depend>ros_gz_image</depend>
