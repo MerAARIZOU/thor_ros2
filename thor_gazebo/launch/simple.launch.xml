@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <include file="$(find-pkg-share thor_gazebo)/launch/start_world.launch.py" />
+
+    <include file="$(find-pkg-share thor_gazebo)/launch/robot_spawn.launch.py" />
+
+    <!--include file="$(find-pkg-share mycobot_gazebo)/launch/spawn.launch.xml">
+            <arg name="robot_name" value="mycobot_280_1"/>
+            <arg name="x_spawn" value="0.0"/>
+            <arg name="y_spawn" value="0.0"/>
+            <arg name="z_spawn" value="0.15"/>
+            <arg name="roll_spawn" value="0.0"/>
+            <arg name="pitch_spawn" value="0.0"/>
+            <arg name="yaw_spawn" value="0.0"/>
+    </include>
+
+    <include file="$(find-pkg-share mycobot_gazebo)/launch/start_gripper_control.launch.py"/-->
+
+
+</launch>

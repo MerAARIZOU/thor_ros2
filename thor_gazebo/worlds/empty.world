@@ -26,14 +26,14 @@
     <!-- Include a model of the Sun from an external URI -->
     <include>
       <uri>
-        https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun
+        model://sun
       </uri>
     </include>
  
     <!-- Include a model of the Ground Plane from an external URI -->
     <include>
       <uri>
-        https://fuel.gazebosim.org/1.0/OpenRobotics/models/Ground Plane
+        model://ground_plane
       </uri>
     </include>
      
