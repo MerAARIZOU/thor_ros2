@@ -329,10 +329,4 @@
             <inertia ixx="3358780.25" iyy="627437.875" izz="3410634.5" ixy="-145110.265625" ixz="93.539124" iyz="1280.361816" />
         </inertial>
     </link>
-    <gazebo>
-        <plugin filename="ignition-gazebo-joint-state-publisher-system" name="ignition::gazebo::systems::JointStatePublisher">
-            <topic>joint_states</topic>
-        </plugin>    
-    </gazebo>   
-
 </robot>

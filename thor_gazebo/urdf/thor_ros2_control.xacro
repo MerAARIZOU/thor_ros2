@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="thor">
+
+    <!-- Interface the robot's hardware with the ROS 2 Control library -->
+    <ros2_control name="RobotSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+        <joint name="joint_base_art1_yaw">
+            <command_interface name="position">
+                <param name="min">-3.1415</param>
+                <param name="max">3.1415</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_art1_art2_pitch">
+            <command_interface name="position">
+                <param name="min">-1.5707963267948966</param>
+                <param name="max">1.5707963267948966</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_art2_art3_pitch">
+            <command_interface name="position">
+                <param name="min">-1.5707963267948966</param>
+                <param name="max">1.5707963267948966</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_art3_art4_roll">
+            <command_interface name="position">
+                <param name="min">-3.1415</param>
+                <param name="max">3.1415</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_art4_art5_pitch">
+            <command_interface name="position">
+                <param name="min">-1.5</param>
+                <param name="max">1.5</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_art5_art6_roll">
+            <command_interface name="position">
+                <param name="min">-3.1415</param>
+                <param name="max">3.1415</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_hand_finger_left">
+            <command_interface name="position">
+                <param name="min">0.0</param>
+                <param name="max">0.06</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_hand_finger_right">
+            <param name="mimic">joint_hand_finger_left</param>
+            <param name="multiplier">1.0</param>
+            <command_interface name="position">
+                <param name="min">0.0</param>
+                <param name="max">0.06</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+    </ros2_control>
+</robot>

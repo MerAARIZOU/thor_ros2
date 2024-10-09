@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-    <include file="$(find-pkg-share thor_gazebo)/launch/start_world.launch.py" />
+    <include file="$(find-pkg-share thor_gazebo)/launch/start_world_gzweb.launch.py" />
 
     <include file="$(find-pkg-share thor_gazebo)/launch/robot_spawn.launch.py" />
 

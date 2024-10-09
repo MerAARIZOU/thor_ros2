@@ -14,15 +14,16 @@ def generate_launch_description():
 
     pkg_thor_description = get_package_share_directory('thor_description')
     pkg_thor_gazebo = get_package_share_directory('thor_gazebo')
-    urdf_model_path = os.path.join(pkg_thor_description, 'urdf', 'thor.urdf')
+    urdf_model_path = os.path.join(pkg_thor_gazebo, 'urdf', 'thor_classic_gazebo.xacro')
     default_ros_gz_bridge_config_file_path = os.path.join(pkg_thor_gazebo, 'config', 'ros_gz_bridge.yaml')
 
     use_robot_state_pub = LaunchConfiguration('use_robot_state_pub', default='true')
     use_sim_time = LaunchConfiguration('use_sim_time')
     urdf_model = LaunchConfiguration('urdf_model')
     robot_name = LaunchConfiguration('robot_name')
-    with open(urdf_model_path, 'r') as infp:
-        robot_description_content = infp.read()
+    robot_description_content = ParameterValue(Command(['xacro ', urdf_model_path]), value_type=str)
+    '''with open(urdf_model_path, 'r') as infp:
+        robot_description_content = infp.read()'''
     
     x = LaunchConfiguration('x')
     y = LaunchConfiguration('y')
@@ -66,14 +67,34 @@ def generate_launch_description():
                    ],
         output='screen')
     
-    start_gazebo_ros_bridge_cmd = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        parameters=[{
-            'config_file': default_ros_gz_bridge_config_file_path,
-        }],
-        output='screen'
-  )  
+    arm_controller  = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+        "arm_controller",
+        "--controller-manager",
+        "/controller_manager"
+        ])
+    
+    gripper_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+        "grip_controller",
+        "--controller-manager",
+        "/controller_manager"
+        ])
+
+    joint_state_broadcaster = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+        "joint_state_broadcaster",
+        "--controller-manager",
+        "/controller_manager"
+        ])   
+
+
     
     return LaunchDescription([
         robot_file_arg,
@@ -119,5 +140,8 @@ def generate_launch_description():
             name='yaw',
             default_value='0.0',
             description='yaw angle of initial orientation, radians'),
+        arm_controller,
+        gripper_controller,
+        joint_state_broadcaster,
         gazebo_ros_spawner
     ])

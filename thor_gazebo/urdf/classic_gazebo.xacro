@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="thor">
+
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <robotNamespace>/</robotNamespace>
+            <robot_param>robot_description</robot_param>
+            <robot_param_node>robot_state_publisher</robot_param_node>
+            <robotSimType>gazebo_ros2_control/DefaultRobotHWSim</robotSimType>
+            <parameters>$(find thor_gazebo)/config/thor_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+    <xacro:macro name="default_transmission" params="joint_name">
+        <transmission name="transmission_${joint_name}">
+            <plugin>transmission_interface/SimpleTransmission</plugin>
+            <actuator name="actuator_${joint_name}" role="actuator_${joint_name}"/>
+            <joint name="${joint_name}" role="${joint_name}">
+                <mechanical_reduction>1.0</mechanical_reduction>
+            </joint>
+        </transmission>
+    </xacro:macro>
+
+    <gazebo reference="link_base">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="link_art1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="link_art2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="link_art3">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="link_art4">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="link_art5">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="link_art6">
+      <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="link_hand">
+      <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="link_finger_left">
+      <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="link_finger_right">
+      <material>Gazebo/White</material>
+    </gazebo>
+
+    
+
+    <xacro:default_transmission joint_name="joint_base_art1_yaw"/>
+    <xacro:default_transmission joint_name="joint_art1_art2_pitch"/>
+    <xacro:default_transmission joint_name="joint_art2_art3_pitch"/>
+    <xacro:default_transmission joint_name="joint_art3_art4_roll"/>
+    <xacro:default_transmission joint_name="joint_art4_art5_pitch"/>
+    <xacro:default_transmission joint_name="joint_art5_art6_roll"/>
+    <xacro:default_transmission joint_name="joint_hand_finger_left"/>
+</robot>

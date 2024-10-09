@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="thor">
+
+    <!-- Load Thor URDF model-->
+    <xacro:include filename="$(find thor_description)/urdf/thor_urdf.xacro" />
+
+    <!-- Load Gazebo Classic parameters-->
+    <xacro:include filename="$(find thor_gazebo)/urdf/classic_gazebo.xacro" />
+
+    <!-- The Gazebo plugin for ros2_control -->
+    <xacro:include filename="$(find thor_gazebo)/urdf/thor_ros2_control.xacro" />
+    
+</robot>
