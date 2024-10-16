@@ -60,6 +60,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             'world',
             default_value=[os.path.join(pkg_thor_gazebo, 'worlds', 'empty.world'), ''],
+            #default_value=[os.path.join(pkg_thor_gazebo, 'worlds', 'small_warehouse_classic.world'), ''],
             description='SDF world file'),
         DeclareLaunchArgument(
             'verbose', default_value='true',
