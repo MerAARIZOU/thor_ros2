@@ -3,7 +3,7 @@
 This work is my contribution of a ROS2 package to manipulate a simulated **Thor Robotic Arm** with Gazebo.
 **Thor Robotic Arm** is an Open source 3D printable 06DoF Arm developed by Àngel L.M.. More details can be found in the [official website](http://thor.angel-lm.com/) 
 
-# Thor Robotic Arm: Gazebo Classic + Rviz2
+# Thor Robotic Arm: Gazebo Classic + Rviz2 + MoveIt!
 <br>
 
 1. [Description](##description)
@@ -16,8 +16,9 @@ This work is my contribution of a ROS2 package to manipulate a simulated **Thor 
 ## 1. Description
 This work describes a set of ROS2 packages that can simulate and control the Thor 06DoF robotic arm. The simulation is done with Gazebo Classic and the code was tested with the Humble distrubution.
 ## 2. Packages
-  - `thor_description`: xacro description of the URDF robot model
-  - `thor_gazebo`: simulation of the robot on Gazebo Classic
+  - `thor_description`: xacro description of the URDF robot model.
+  - `thor_gazebo`: simulation of the robot on Gazebo Classic.
+  - `thor_moveit`: configuration files to enable MoveIt functionnalities.
 ## 3. Dependencies
   - `controller_manager`
   - `gripper_controllers`
