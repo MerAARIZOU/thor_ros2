@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: thor_description
+    relative_path: urdf/thor.urdf
+  srdf:
+    relative_path: config/thor.srdf
+  package_settings:
+    author_name: Meriem L. AARIZOU
+    author_email: meriem.aarizou@univ-mosta.dz
+    generated_timestamp: 1729633616
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

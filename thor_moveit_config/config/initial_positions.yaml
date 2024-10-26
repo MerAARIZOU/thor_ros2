@@ -1,0 +1,10 @@
+# Default initial positions for thor's ros2_control fake system
+
+initial_positions:
+  joint_art1_art2_pitch: 0
+  joint_art2_art3_pitch: 0
+  joint_art3_art4_roll: 0
+  joint_art4_art5_pitch: 0
+  joint_art5_art6_roll: 0
+  joint_base_art1_yaw: 0
+  joint_hand_finger_left: 0
